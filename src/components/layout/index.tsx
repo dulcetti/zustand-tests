@@ -1,9 +1,18 @@
-import './styles.css';
+import Header from '../header';
+import Content from '../content';
+import Footer from '../footer';
+import Spinner from '../spinner';
+import { useStore } from '../../stores/index';
 
 export default function Layout() {
+  const loading = useStore((state) => state.loading);
+
   return (
-    <div className='layout'>
-      <h1 className='title'>Content</h1>
-    </div>
+    <>
+      <Header />
+      <Content />
+      <Footer />
+      {loading && <Spinner isLoading={loading} />}
+    </>
   );
 }
