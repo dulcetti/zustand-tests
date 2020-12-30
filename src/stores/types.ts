@@ -14,3 +14,18 @@ export type TStore = {
   setCep: (cep: string) => void;
   setLoading: (isLoading: boolean) => void;
 };
+
+export type TStoreAddress = {
+  address: TAddress;
+  setAddress: (address: TAddress) => void;
+};
+
+export type TStoreCep = {
+  cep: string;
+  setCep: (cep: string) => void;
+};
+
+export type TStoreLoading = {
+  loading: boolean;
+  setLoading: (isLoading: boolean) => void;
+};
