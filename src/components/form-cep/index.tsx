@@ -4,10 +4,10 @@ import './styles.css';
 import { ICep } from '../../services/address/interface';
 import { IFormCep } from './interface';
 import Button from '../button';
-import { useStore } from '../../stores/index';
+import { useStoreCep } from '../../stores/cep';
 
 export default function FormCep({ buttonLabel }: IFormCep) {
-  const [cep, setCep] = useStore((state) => [state.cep, state.setCep]);
+  const [cep, setCep] = useStoreCep((state) => [state.cep, state.setCep]);
   const { errors, handleSubmit, register } = useForm();
   const onSubmit = (data: ICep) => {
     setCep(data.cep);
