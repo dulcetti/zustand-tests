@@ -2,19 +2,21 @@ import './styles.css';
 import logo from '../../assets/images/logo192.png';
 import Button from '../button';
 import getAddress from '../../services/address';
-import { useStore } from '../../stores/index';
+import { useStoreAddress } from '../../stores/address';
+import { useStoreCep } from '../../stores/cep';
+import { useStoreLoading } from '../../stores/loading';
 
 export default function Header() {
-  const states = useStore();
-  const cep = useStore((state) => state.cep);
-  const address = useStore((state) => state.address);
+  const [cep, setCep] = useStoreCep((state) => [state.cep, state.setCep]);
+  const setAddress = useStoreAddress((state) => state.setAddress);
+  const setLoading = useStoreLoading((state) => state.setLoading);
 
   const getAddressResult = async () => {
-    states.setLoading(true);
+    setLoading(true);
     await getAddress({ cep }).then((result) => {
-      states.setCep(result.cep);
-      states.setAddress(result);
-      states.setLoading(false);
+      setCep(result.cep);
+      setAddress(result);
+      setLoading(false);
     });
   };
 
