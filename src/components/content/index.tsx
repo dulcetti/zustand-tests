@@ -1,9 +1,10 @@
 import './styles.css';
-import { useStore } from '../../stores/index';
+import { useStoreAddress } from '../../stores/address';
+import { useStoreCep } from '../../stores/cep';
 
 export default function Content() {
-  const address = useStore((state) => state.address);
-  const cep = useStore((state) => state.cep);
+  const address = useStoreAddress((state) => state.address);
+  const cep = useStoreCep((state) => state.cep);
 
   return (
     <main className='content'>
