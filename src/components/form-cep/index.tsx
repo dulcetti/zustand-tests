@@ -18,15 +18,17 @@ export default function FormCep({ buttonLabel }: IFormCep) {
       <label>
         Digite o CEP:
         <input
+          aria-label='cep-input'
           className='input-text'
           defaultValue={cep}
+          minLength={6}
           maxLength={8}
           name='cep'
           type='text'
           ref={register({ minLength: 8, required: true })}
         />
       </label>
-      {errors.cep && <p>Obrigatório</p>}
+      {errors.cep && <p className='error'>Required</p>}
       <Button label={buttonLabel} type='submit' />
     </form>
   );
